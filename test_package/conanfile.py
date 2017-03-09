@@ -9,6 +9,9 @@ class ZlibTestConan(ConanFile):
   requires = 'zlib/1.2.11@{}/{}'.format(username, channel)
   generators = 'cmake'
 
+  def configure(self):
+    self.options['zlib'].shared = True
+
   def build(self):
     cmake = CMake(self.settings)
     self.run('cmake {} {}'.format(
@@ -17,7 +20,6 @@ class ZlibTestConan(ConanFile):
   # build
 
   def imports(self):
-    #self.copy('*.a', 'lib', 'lib')
     pass
   # imports
 

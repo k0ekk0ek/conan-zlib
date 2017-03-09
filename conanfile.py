@@ -24,8 +24,9 @@ class ZlibConan(ConanFile):
   license = "zlib" # zlib uses the zlib license
   url = 'https://github.com/k0ekk0ek/conan-zlib'
   settings = 'os', 'compiler', 'build_type', 'arch'
-  options = {'shared': [True, False]}
-  default_options = 'shared=False'
+  options = {'shared': [True, False],
+             'position_independent_code': [True, False]} # not implemented yet
+  default_options = "=False\n".join(options.keys()) + "=False"
 
   # The properties below are for convenience and are not required by Conan.
   source_dir = None
